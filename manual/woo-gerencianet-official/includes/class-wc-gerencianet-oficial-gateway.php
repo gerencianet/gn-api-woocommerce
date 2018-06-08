@@ -561,8 +561,20 @@ class WC_Gerencianet_Oficial_Gateway extends WC_Payment_Gateway {
 
 		$items = array();
 		foreach ( $order_items as $items_key => $item ) {
+			$item_name = $item->get_name();
+			$item_meta = strip_tags( wc_display_item_meta( $item, array(
+				'before'    => "",
+				'separator' => ", ",
+				'after'     => "",
+				'echo'      => false,
+				'autop'     => false,
+			) ) );
+
+			if ( $item_meta ) {
+				$item_name .= ' (' . $item_meta . ')';
+			}
 			$items [] = array(
-				"name"   => $item ['name'],
+				"name"   => $item_name,
 				"value"  => (int) $this->gn_price_format( $item ['line_subtotal'] / $item ['qty'] ),
 				"amount" => (int) $item ['qty']
 			);
