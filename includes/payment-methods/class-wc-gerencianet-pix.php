@@ -289,9 +289,6 @@ function init_gerencianet_pix() {
 					case 'coupon':
 						$value -= $item->get_discount();
 						break;
-					case 'line_item':
-						$value         += $item->get_total();
-						break;
 					default:
 						$product = $item->get_product();
 						$value  += ( $item->get_quantity() * $product->get_price() );

@@ -240,16 +240,6 @@ function init_gerencianet_cartao() {
 						);
 						$discount    = $newDiscount;
 						break;
-					case 'line_item':
-						$product     = $item->get_product();
-						$newItem     = array(
-							'name'   => $item->get_name(),
-							'amount' => $item->get_quantity(),
-							'value'  => $item->get_total() * 100,
-						);
-						$orderTotal += $item->get_total() * 100 * $item->get_quantity();
-						$items[]     = $newItem;
-						break;
 					default:
 						$product     = $item->get_product();
 						$newItem     = array(
