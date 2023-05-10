@@ -1,5 +1,5 @@
 languages:
    PHP: true
 
-exclude_paths:
- - "examples/*.php"
+exclude_patterns:
+  - "examples/"

@@ -113,7 +113,7 @@ function init_gerencianet_pix() {
 					return;
 			}
 			if ( isset( $file_read ) ) {
-				$this->update_option( 'gn_pix_file_name', $file_name );
+				$this->update_option( 'gn_pix_file_name', str_replace('p12', 'pem', $file_name) );
 				$this->update_option( 'gn_pix_file', $file_read );
 			}
 

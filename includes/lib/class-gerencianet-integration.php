@@ -55,7 +55,7 @@ class Gerencianet_Integration {
 					}
 					
 				}
-			$gn_credentials['pix_cert'] = $certificatePath;
+			$gn_credentials['certificate'] = $certificatePath;
 		}
 		return $gn_credentials;
 	}
@@ -143,7 +143,7 @@ class Gerencianet_Integration {
 
 		try {
 			$api      = new Gerencianet( $this->get_credentials( GERENCIANET_BOLETO_ID ) );
-			$response = $api->oneStep( array(), $body );
+			$response = $api->createOneStepCharge( array(), $body );
 			return self::result_api( $response, true );
 		} catch ( GerencianetException $e ) {
 			$errorResponse = array(
@@ -270,7 +270,7 @@ class Gerencianet_Integration {
 
 		try {
 			$api         = new Gerencianet( $this->get_credentials( GERENCIANET_CARTAO_ID ) );
-			$card_charge = $api->oneStep( array(), $body );
+			$card_charge = $api->createOneStepCharge( array(), $body );
 			return self::result_api( $card_charge, true );
 		} catch ( GerencianetException $e ) {
 			$errorResponse = array(
